@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<body style="background-color:#FF0000">
+    
+    <script type="text/javascript">
+        window.submitCardData = submitCardData;
+
+        var userAgent = window.navigator.userAgent.toLowerCase(),
+        ios = /iphone|ipod|ipad/.test( userAgent );
+
+        function submitCardData(x, y) {
+            setTimeout(function() {
+                if (ios) {
+                    webkit.messageHandlers.iOSHandler.postMessage("REDIRECT_TO_BANK");
+                } else {
+                    AndroidHandler.postMessage("REDIRECT_TO_BANK");
+                }
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
